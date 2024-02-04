@@ -1,22 +1,9 @@
 import "./Gameboard.css"
 
-const initialBoard = [
-    [null, null, null],
-    [null, null, null],
-    [null, null, null],
-]
 
-export function GameBoard({ gameTurns, onSelectSquare }) {
-    let b = initialBoard;
-    // const [board, setBoard] = useState(b);
-    gameTurns.map((turn) => {
-        let { square, activePlayer } = turn;
-        let { row, col } = square;
-        b[row][col] = activePlayer;
-    })
-
+export function GameBoard({ onSelectSquare, board }) {
     return <div className="board flex-space-between">
-        {b.map((rows, rowIndex) =>
+        {board.map((rows, rowIndex) =>
         (
             <ul key={rowIndex}>
                 {rows.map((square, colIndex) =>

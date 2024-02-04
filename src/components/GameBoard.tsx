@@ -1,4 +1,3 @@
-import { useState } from "react";
 import "./Gameboard.css"
 
 const initialBoard = [
@@ -8,28 +7,28 @@ const initialBoard = [
 ]
 
 
-export function GameBoard({ playerSymbol = "X" , onSelectSquare}) {
+export function GameBoard({ gameTurns , onSelectSquare}) {
     let b = initialBoard;
-    const [board, setBoard] = useState(b);
-
-    function handleSelectSquare(rowIndex, colIndex) {
-        setBoard((prev) => {
-            const b = [...prev.map(innerArr => [...innerArr])]
-            b[rowIndex][colIndex] = playerSymbol;
-            return b;
-        })
-
-        onSelectSquare();
-    }
+    // const [board, setBoard] = useState(b);
+    gameTurns.map((turn) => {
+        let {square, activePlayer} = turn;
+        let {row,col} = turn.square;
+        
+        b[row][col] = activePlayer;
+    })
+    // function handleSelectSquare(rowIndex, colIndex) {
+    //     onSelectSquare(rowIndex, colIndex, playerSymbol);
+    // }
 
     return <div className="board flex-space-between">
-        {board.map((rows, rowIndex) =>
+        {b.map((rows, rowIndex) =>
         (
             <ul>
                 {rows.map((square, colIndex) =>
 
                     <li onClick={() => {
-                        handleSelectSquare(rowIndex, colIndex)
+                        // handleSelectSquare(rowIndex, colIndex)
+                        onSelectSquare(rowIndex, colIndex);
                     }}>{square}</li>
                 )}
             </ul>

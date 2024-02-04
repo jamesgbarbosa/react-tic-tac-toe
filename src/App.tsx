@@ -15,18 +15,8 @@ function getActivePlayer(gameTurns) {
   return gameTurns.length == 0 ? "X" : (gameTurns[0].activePlayer == "X" ? "O" : "X")
 }
 
-function App() {
-  const [gameTurns, setGameTurns] = useState([])
-  let board = initialBoard;
-  let activePlayer = "";
+function deriveWinner(board) {
   let isWinner = false;
-
-  gameTurns.map((turn) => {
-    let { square, activePlayer } = turn;
-    let { row, col } = square;
-    board[row][col] = activePlayer;
-  })
-
   for (const wc of WinningCombinations) {
     const first = board[wc[0].row][wc[0].column]
     const second = board[wc[1].row][wc[1].column]
@@ -36,8 +26,26 @@ function App() {
       isWinner = true;
     }
   }
+  return isWinner;
+}
 
-  if (isWinner) {
+function deriveBoard(gameTurns, board) {
+  gameTurns.map((turn) => {
+    let { square, activePlayer } = turn;
+    let { row, col } = square;
+    board[row][col] = activePlayer;
+  })
+
+}
+
+function App() {
+  const [gameTurns, setGameTurns] = useState([])
+  let board = [...initialBoard.map(it => [...it])];
+  let activePlayer = "";
+
+  deriveBoard(gameTurns, board)
+
+  if (deriveWinner(board)) {
     // setTimeout(() => {
     //   alert(`Player ${gameTurns[0].activePlayer} won!`)
     // }, 500)
@@ -56,6 +64,14 @@ function App() {
     })
   }
 
+  function resetBoard() {
+    board = initialBoard;
+    setGameTurns((prev) => {
+      return [];
+    });
+    debugger;
+  }
+
   return (
     <>
       <div className="main">
@@ -64,14 +80,24 @@ function App() {
             <h1>Tic-Tac-Toe!</h1>
           </div>
           <div className="winner-container flex center">
-            {isWinner ? <p className="winner-player">Player {activePlayer} won!</p> : null}
+            {deriveWinner(board) ?
+              <div className="flex">
+                <p className="winner-player">Player {activePlayer} won!</p>
+                <div className="restart-button-container">
+                  <button onClick={() => {
+                    resetBoard()
+                  }}>Restart Board</button>
+                </div>
+              </div>
+              : null}
+
           </div>
           <div className="player-container flex-space-between">
             <Player symbol="X" isActive={activePlayer === "X"} defaultName="Player 1" />
             <Player symbol="O" isActive={activePlayer === "O"} defaultName="Player 2" />
           </div>
           <div className="center">
-            <GameBoard isDisabled={isWinner} board={board} onSelectSquare={handleSelectSquare} />
+            <GameBoard isDisabled={deriveWinner(board)} board={board} onSelectSquare={handleSelectSquare} />
           </div>
         </div>
 

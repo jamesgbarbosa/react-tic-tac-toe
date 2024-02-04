@@ -1,3 +1,7 @@
+Tic Tac Toe game developed in React
+
+![image](https://github.com/jamesgbarbosa/react-tic-tac-toe/assets/2775369/9cf94e4e-953e-4b6e-b4da-e69c869c0858)
+
 # React + TypeScript + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.

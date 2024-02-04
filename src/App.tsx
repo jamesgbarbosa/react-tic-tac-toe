@@ -40,15 +40,13 @@ function deriveBoard(gameTurns, board) {
 
 function App() {
   const [gameTurns, setGameTurns] = useState([])
+  const [playerName, setPlayerName] = useState({X : "Player 1", O: "Player 2"})
   let board = [...initialBoard.map(it => [...it])];
   let activePlayer = "";
 
   deriveBoard(gameTurns, board)
 
   if (deriveWinner(board)) {
-    // setTimeout(() => {
-    //   alert(`Player ${gameTurns[0].activePlayer} won!`)
-    // }, 500)
     activePlayer = gameTurns[0].activePlayer;
   } else {
     activePlayer = getActivePlayer(gameTurns);
@@ -69,7 +67,12 @@ function App() {
     setGameTurns((prev) => {
       return [];
     });
-    debugger;
+  }
+
+  function handleNameChange(name, symbol) {
+    setPlayerName((prev) => {
+      return {...prev, [symbol]:name};
+    })
   }
 
   return (
@@ -82,7 +85,7 @@ function App() {
           <div className="winner-container flex center">
             {deriveWinner(board) ?
               <div className="flex">
-                <p className="winner-player">Player {activePlayer} won!</p>
+                <p className="winner-player">{playerName[activePlayer]} won!</p>
                 <div className="restart-button-container">
                   <button onClick={() => {
                     resetBoard()
@@ -93,8 +96,8 @@ function App() {
 
           </div>
           <div className="player-container flex-space-between">
-            <Player symbol="X" isActive={activePlayer === "X"} defaultName="Player 1" />
-            <Player symbol="O" isActive={activePlayer === "O"} defaultName="Player 2" />
+            <Player symbol="X" isActive={activePlayer === "X"} defaultName={playerName.X} onNameChange={handleNameChange}/>
+            <Player symbol="O" isActive={activePlayer === "O"} defaultName={playerName.O} onNameChange={handleNameChange}/>
           </div>
           <div className="center">
             <GameBoard isDisabled={deriveWinner(board)} board={board} onSelectSquare={handleSelectSquare} />

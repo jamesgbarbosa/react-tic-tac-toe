@@ -5,8 +5,13 @@ import { Player } from './components/Player'
 import { GameBoard } from './components/GameBoard'
 
 function App() {
+  const [activePlayer, setActivePlayer] = useState("X")
 
-
+  function handleSelectSquare() {
+    setActivePlayer((prev) => {
+      return prev === "X" ? "O" : "X";
+    })
+  }
 
   return (
     <>
@@ -17,7 +22,7 @@ function App() {
             <Player symbol="O"/>
           </div>
           <div className="center">
-            <GameBoard />
+            <GameBoard playerSymbol={activePlayer} onSelectSquare={handleSelectSquare} />
           </div>
         </div>
       </div>

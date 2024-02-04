@@ -8,7 +8,7 @@ const initialBoard = [
 ]
 
 
-export function GameBoard({ playerSymbol = "X" }) {
+export function GameBoard({ playerSymbol = "X" , onSelectSquare}) {
     let b = initialBoard;
     const [board, setBoard] = useState(b);
 
@@ -18,6 +18,8 @@ export function GameBoard({ playerSymbol = "X" }) {
             b[rowIndex][colIndex] = playerSymbol;
             return b;
         })
+
+        onSelectSquare();
     }
 
     return <div className="board flex-space-between">

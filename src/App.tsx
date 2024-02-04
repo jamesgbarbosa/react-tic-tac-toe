@@ -83,17 +83,14 @@ function App() {
             <h1>Tic-Tac-Toe!</h1>
           </div>
           <div className="winner-container flex center">
-            {deriveWinner(board) ?
               <div className="flex">
-                <p className="winner-player">{playerName[activePlayer]} won!</p>
+                {deriveWinner(board) ? <p className="winner-player">{playerName[activePlayer]} won!</p> : null}
                 <div className="restart-button-container">
                   <button onClick={() => {
                     resetBoard()
                   }}>Restart Board</button>
                 </div>
               </div>
-              : null}
-
           </div>
           <div className="player-container flex-space-between">
             <Player symbol="X" isActive={activePlayer === "X"} defaultName={playerName.X} onNameChange={handleNameChange}/>

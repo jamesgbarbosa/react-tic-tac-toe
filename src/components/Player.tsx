@@ -1,9 +1,11 @@
-export function Player({symbol}) {
+import "./Player.css";
+
+export function Player({symbol, isActive}) {
     return <>
-        <div className="flex">
+        <div className={`player flex ${isActive ? "active" : ''}`}>
             <label>Name: </label>
             <input type="text"></input>
-            <span>{symbol}</span>
+            <span className="symbol">{symbol}</span>
         </div>
     </>
 }

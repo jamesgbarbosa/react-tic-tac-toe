@@ -18,8 +18,8 @@ function App() {
       <div className="main">
         <div className="game-container">
           <div className="player-container flex-space-between">
-            <Player symbol="X" />
-            <Player symbol="O"/>
+            <Player symbol="X" isActive={activePlayer === "X"}/>
+            <Player symbol="O" isActive={activePlayer === "O"}/>
           </div>
           <div className="center">
             <GameBoard playerSymbol={activePlayer} onSelectSquare={handleSelectSquare} />

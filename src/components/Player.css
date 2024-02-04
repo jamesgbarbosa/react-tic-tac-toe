@@ -1,0 +1,17 @@
+.player {
+    width: 17rem;
+    padding: 0.5rem;
+}
+
+.player > .symbol {
+    padding-left: 1rem;
+    font-weight: bold;
+}
+
+.player > label {
+    padding-right: 1rem;
+}
+
+.active {
+    border: 3px solid red;
+}

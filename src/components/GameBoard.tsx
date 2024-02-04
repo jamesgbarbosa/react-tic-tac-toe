@@ -7,7 +7,7 @@ export function GameBoard({ onSelectSquare, board, isDisabled }) {
         (
             <ul key={rowIndex}>
                 {rows.map((square, colIndex) =>
-                    <li key={`${rowIndex}${colIndex}`} onClick={() => {
+                    <li className={square ? 's-active' : ''} key={`${rowIndex}${colIndex}`} onClick={() => {
                         isDisabled ? null : onSelectSquare(rowIndex, colIndex);
                     }}>{square}</li>
                 )}

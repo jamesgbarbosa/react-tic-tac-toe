@@ -60,6 +60,9 @@ function App() {
     <>
       <div className="main">
         <div className="game-container">
+          <div className="title flex center">
+            <h1>Tic-Tac-Toe!</h1>
+          </div>
           <div className="winner-container flex center">
             {isWinner ? <p className="winner-player">Player {activePlayer} won!</p> : null}
           </div>

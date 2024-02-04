@@ -21,6 +21,10 @@ ul>li {
     border-radius: 15px;
     margin: 0 1rem;
     color: #EFF8E2;
+    background-color: #ADA8B6;
+}
+
+ul > li.s-active {
     background-color: #573280;
 }
 

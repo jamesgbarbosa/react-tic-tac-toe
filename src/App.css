@@ -58,7 +58,6 @@
 
 .winner-container {
   height: 2rem;
-  animation: blink 1s linear 5;
 }
 
 @keyframes blink {
@@ -75,6 +74,20 @@
   }
 }
 
+@keyframes shake {
+  25% {
+    transform: rotate(-3deg);;
+  }
+
+  50% {
+    transform: rotate(0deg);;
+  }
+
+  75% {
+    transform: rotate(3deg);;
+  }
+}
+
 .title {
   background: linear-gradient(to right, #23022E, #573280 ,#23022E);
   color: #EFF8E2;
@@ -83,8 +96,18 @@
 .winner-player {
   font-size: 2rem;
   font-weight: bold;
-  color: #EFF8E2;
+  color: red;
   height: 4rem;
+  animation: blink 1s linear 5;
+}
+
+.restart-button-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  height: 7rem;
+  padding-left: 1rem;
+  animation: shake 2s linear infinite;
 }
 
 .center {

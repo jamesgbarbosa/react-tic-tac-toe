@@ -38,10 +38,10 @@ function App() {
   }
 
   if (isWinner) {
-    setTimeout(() => {
-      alert(`Player ${gameTurns[0].activePlayer} won!`)
-    }, 500)
-   
+    // setTimeout(() => {
+    //   alert(`Player ${gameTurns[0].activePlayer} won!`)
+    // }, 500)
+    activePlayer = gameTurns[0].activePlayer;
   } else {
     activePlayer = getActivePlayer(gameTurns);
   }
@@ -60,12 +60,15 @@ function App() {
     <>
       <div className="main">
         <div className="game-container">
+          <div className="winner-container flex center">
+            {isWinner ? <p className="winner-player">Player {activePlayer} won!</p> : null}
+          </div>
           <div className="player-container flex-space-between">
             <Player symbol="X" isActive={activePlayer === "X"} defaultName="Player 1" />
             <Player symbol="O" isActive={activePlayer === "O"} defaultName="Player 2" />
           </div>
           <div className="center">
-            <GameBoard  isDisabled={isWinner} board={board} onSelectSquare={handleSelectSquare} />
+            <GameBoard isDisabled={isWinner} board={board} onSelectSquare={handleSelectSquare} />
           </div>
         </div>
 

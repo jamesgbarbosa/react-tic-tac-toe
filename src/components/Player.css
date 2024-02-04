@@ -17,15 +17,19 @@
     padding-right: 1rem;
     font-weight: bold;
     font-size: 3rem;
+    color: #EFF8E2;
 }
 
 .player > label {
     padding-right: 1rem;
+    color: #EFF8E2;
 }
 
 .player > .edit {
     padding-left: 1rem;
     font-weight: bold;
+    color: #EFF8E2;
+
 }
 
 .player > .edit:hover {

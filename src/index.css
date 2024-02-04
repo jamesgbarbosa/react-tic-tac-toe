@@ -64,23 +64,6 @@ button:focus-visible {
   }
 }
 
-.main {
-  /* height: 100vh; */
-  display: flex;
-  justify-content: center;
-} 
-
-.game-container {
-  padding: 2rem;
-  border: 1px solid black;
-  width: 40rem;
-  /* display: flex; */
-}
-
-.player-container {
-  width: 100%;
-}
-
 .flex {
   display: flex;
 }

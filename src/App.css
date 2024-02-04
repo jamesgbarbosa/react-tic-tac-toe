@@ -36,7 +36,48 @@
   }
 }
 
+.main {
+  /* height: 100vh; */
+  display: flex;
+  justify-content: center;
+} 
 
+.game-container {
+  padding: 2rem;
+  border: 1px solid black;
+  width: 40rem;
+  background-color: #23022E;
+  /* display: flex; */
+}
+
+.player-container {
+  width: 100%;
+}
+
+.winner-container {
+  height: 2rem;
+  animation: blink 1s linear 5;
+}
+
+@keyframes blink {
+  25% {
+    opacity: 0.5;
+  }
+
+  50% {
+    opacity: 0;
+  }
+
+  75% {
+    opacity: 0.5;
+  }
+}
+
+.winner-player {
+  font-size: 2rem;
+  font-weight: bold;
+  color: red;
+}
 
 .center {
   display: flex;

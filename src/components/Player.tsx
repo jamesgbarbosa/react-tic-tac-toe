@@ -1,9 +1,9 @@
 import { useState } from "react";
 import "./Player.css";
 
-export function Player({ symbol, isActive }) {
+export function Player({ symbol, isActive, defaultName }) {
     const [isEditMode, setisEditMode] = useState(false)
-    const [playerName, setPlayerName] = useState("<Enter name>")
+    const [playerName, setPlayerName] = useState(defaultName)
 
     return <>
         <div className={`player-container flex`}>

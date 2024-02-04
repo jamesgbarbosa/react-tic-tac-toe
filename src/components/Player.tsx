@@ -1,7 +1,7 @@
 import { useState } from "react";
 import "./Player.css";
 
-export function Player({ symbol, isActive, defaultName, onNameChange }) {
+export function Player({ symbol, isActive, defaultName, onNameChange, isDisableEdit }) {
     const [isEditMode, setisEditMode] = useState(false)
     const [playerName, setPlayerName] = useState(defaultName)
 
@@ -20,8 +20,9 @@ export function Player({ symbol, isActive, defaultName, onNameChange }) {
                 {
                     isEditMode ? <input className="name" onChange={(e) => { setPlayerName(e.target.value) }} value={playerName} type="text"></input> : <label className="name">{playerName}</label>
                 }
-
-                <span className="edit" onClick={() => { onClickButton() }}>{isEditMode ? "Submit" : "Edit"}</span>
+                { isDisableEdit ? null :
+                    <span className="edit" onClick={() => { onClickButton() }}>{isEditMode ? "Submit" : "Edit"}</span>
+                }
             </section>
         </div>
     </>

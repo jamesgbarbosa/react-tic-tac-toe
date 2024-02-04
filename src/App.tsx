@@ -93,8 +93,8 @@ function App() {
               </div>
           </div>
           <div className="player-container flex-space-between">
-            <Player symbol="X" isActive={activePlayer === "X"} defaultName={playerName.X} onNameChange={handleNameChange}/>
-            <Player symbol="O" isActive={activePlayer === "O"} defaultName={playerName.O} onNameChange={handleNameChange}/>
+            <Player isDisableEdit={gameTurns?.length > 0} symbol="X" isActive={activePlayer === "X"} defaultName={playerName.X} onNameChange={handleNameChange}/>
+            <Player isDisableEdit={gameTurns?.length > 0} symbol="O" isActive={activePlayer === "O"} defaultName={playerName.O} onNameChange={handleNameChange}/>
           </div>
           <div className="center">
             <GameBoard isDisabled={deriveWinner(board)} board={board} onSelectSquare={handleSelectSquare} />

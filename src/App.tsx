@@ -9,18 +9,11 @@ function getActivePlayer(gameTurns) {
 }
 
 function App() {
-  // const [activePlayer, setActivePlayer] = useState("X")
   const [gameTurns, setGameTurns] = useState([])
   let activePlayer = getActivePlayer(gameTurns);
 
   function handleSelectSquare(rowIndex, colIndex) {
     let isSquareAlreadyMarked = gameTurns.find(it => (it?.square?.row == rowIndex && it?.square.col == colIndex));
-    // setActivePlayer((prev) => {
-    //   if (isSquareAlreadyMarked) {
-    //     return prev;
-    //   }
-    //   return prev === "X" ? "O" : "X";
-    // })
 
     setGameTurns((prev) => {
       if (isSquareAlreadyMarked) {

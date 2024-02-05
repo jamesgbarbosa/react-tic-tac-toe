@@ -31,3 +31,7 @@ ul > li.s-active {
 ul > li:hover {
     cursor: pointer;
 }
+
+.win {
+    color: red;
+}

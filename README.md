@@ -1,6 +1,7 @@
 Tic Tac Toe game developed in React
 
-![image](https://github.com/jamesgbarbosa/react-tic-tac-toe/assets/2775369/9cf94e4e-953e-4b6e-b4da-e69c869c0858)
+![image](https://github.com/jamesgbarbosa/react-tic-tac-toe/assets/2775369/43ac2c7d-4460-4007-8890-c5770ddc77b8)
+
 
 # React + TypeScript + Vite
 

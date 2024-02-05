@@ -3,6 +3,7 @@ import './App.css'
 import './components/Player'
 import { Player } from './components/Player'
 import { GameBoard } from './components/GameBoard'
+import { Logs } from "./components/Logs";
 import { WINNING_COMBINATIONS as WinningCombinations } from "./WinningCombinations"
 
 const initialBoard = [
@@ -100,19 +101,7 @@ function App() {
             <GameBoard isDisabled={deriveWinner(board)} board={board} onSelectSquare={handleSelectSquare} />
           </div>
           <div className="center">
-            <section>
-              {gameTurns.map((it, index) =>
-              (
-                <>
-                  <div key={index}>
-                    <span className="log">
-                      {it?.activePlayer} on [{it?.square?.row}, {it?.square?.col}]
-                    </span>
-                  </div>
-                </>
-              )
-              )}
-            </section>
+            <Logs gameTurns={gameTurns} />
           </div>
         </div>
 

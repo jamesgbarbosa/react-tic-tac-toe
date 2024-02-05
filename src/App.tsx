@@ -40,7 +40,7 @@ function deriveBoard(gameTurns, board) {
 
 function App() {
   const [gameTurns, setGameTurns] = useState([])
-  const [playerName, setPlayerName] = useState({X : "Player 1", O: "Player 2"})
+  const [playerName, setPlayerName] = useState({ X: "Player 1", O: "Player 2" })
   let board = [...initialBoard.map(it => [...it])];
   let activePlayer = "";
 
@@ -71,7 +71,7 @@ function App() {
 
   function handleNameChange(name, symbol) {
     setPlayerName((prev) => {
-      return {...prev, [symbol]:name};
+      return { ...prev, [symbol]: name };
     })
   }
 
@@ -83,32 +83,44 @@ function App() {
             <h1>Tic-Tac-Toe!</h1>
           </div>
           <div className="winner-container flex center">
-              <div className="flex">
-                {deriveWinner(board) ? <p className="winner-player">{playerName[activePlayer]} won!</p> : null}
-                <div className="restart-button-container">
-                  <button onClick={() => {
-                    resetBoard()
-                  }}>Restart Board</button>
-                </div>
+            <div className="flex">
+              {deriveWinner(board) ? <p className="winner-player">{playerName[activePlayer]} won!</p> : null}
+              <div className="restart-button-container">
+                <button onClick={() => {
+                  resetBoard()
+                }}>Restart Board</button>
               </div>
+            </div>
           </div>
           <div className="player-container flex-space-between">
-            <Player isDisableEdit={gameTurns?.length > 0} symbol="X" isActive={activePlayer === "X"} defaultName={playerName.X} onNameChange={handleNameChange}/>
-            <Player isDisableEdit={gameTurns?.length > 0} symbol="O" isActive={activePlayer === "O"} defaultName={playerName.O} onNameChange={handleNameChange}/>
+            <Player isDisableEdit={gameTurns?.length > 0} symbol="X" isActive={activePlayer === "X"} defaultName={playerName.X} onNameChange={handleNameChange} />
+            <Player isDisableEdit={gameTurns?.length > 0} symbol="O" isActive={activePlayer === "O"} defaultName={playerName.O} onNameChange={handleNameChange} />
           </div>
           <div className="center">
             <GameBoard isDisabled={deriveWinner(board)} board={board} onSelectSquare={handleSelectSquare} />
           </div>
+          <div className="center">
+            <section>
+              {gameTurns.map((it, index) =>
+              (
+                <>
+                  <div key={index}>
+                    <span className="log">
+                      {it?.activePlayer} on [{it?.square?.row}, {it?.square?.col}]
+                    </span>
+                  </div>
+                </>
+              )
+              )}
+            </section>
+          </div>
         </div>
 
+
+
+
       </div>
-      {/* {gameTurns.map(it =>
-      (
-        <>
-          <div>{it?.activePlayer} {it?.square?.row} {it?.square?.col}</div>
-        </>
-      )
-      )} */}
+
     </>
   )
 }

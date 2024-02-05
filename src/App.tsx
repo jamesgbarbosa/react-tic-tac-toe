@@ -36,7 +36,6 @@ function deriveBoard(gameTurns, board) {
     let { row, col } = square;
     board[row][col] = activePlayer;
   })
-
 }
 
 function App() {
@@ -89,7 +88,7 @@ function App() {
               <div className="restart-button-container">
                 <button onClick={() => {
                   resetBoard()
-                }}>Restart Board</button>
+                }}> Reset Board</button>
               </div>
             </div>
           </div>
@@ -104,12 +103,7 @@ function App() {
             <Logs gameTurns={gameTurns} />
           </div>
         </div>
-
-
-
-
       </div>
-
     </>
   )
 }
